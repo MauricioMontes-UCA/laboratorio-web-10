@@ -4,7 +4,7 @@ import customerRouter from "./src/routes/customer.routes.js";
 
 const appRouter = Router()
 
-// appRouter.use('/sales', salesRouter);
+appRouter.use('/sales', salesRouter);
 appRouter.use('/customers', customerRouter);
 
 export default appRouter;

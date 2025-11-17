@@ -13,11 +13,28 @@ class CustomerRepository {
         }
     }
 
+    async selectById(id) {
+        try {
+            const query = await pool.query(
+                'SELECT * FROM customers WHERE id = $1', [id]
+            )
+            return query.rows;
+        }
+        catch (err) {
+            throw new Error("Error al obtener al cliente de la base de datos");
+        }
+    }
+
     async selectByCode(code) {
-        const query = await pool.query(
-            'SELECT * FROM customers WHERE code = $1', [code]
-        )
-        return query.rows;
+        try {
+            const query = await pool.query(
+                'SELECT * FROM customers WHERE code = $1', [code]
+            )
+            return query.rows;
+        }
+        catch (err) {
+            throw new Error("Error al obtener al cliente de la base de datos");
+        }
     }
 }
 

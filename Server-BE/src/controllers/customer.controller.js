@@ -21,9 +21,10 @@ class CustomerController {
                 console.error("Cliente no encontrado");
                 res.status(404).json({ message: "Cliente no encontrado" })
             }
-
-            console.info("Cliente obtenido exitosamente");
-            res.status(200).json(data)
+            else {
+                console.info("Cliente obtenido exitosamente");
+                res.status(200).json(data)
+            }
         } 
         catch (err) {
             console.error("Error al buscar al cliente");
