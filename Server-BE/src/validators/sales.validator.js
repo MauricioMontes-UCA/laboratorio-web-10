@@ -16,6 +16,8 @@ class SalesValidator {
                 .bail()
                 .isFloat({ min: 0 }).withMessage('La propiedad amount debe ser un número positivo')
                 .bail()
+                .matches(/^\d+(\.\d{1,2})?$/).withMessage('La propiedad amount debe tener como máximo 2 decimales')
+                .bail()
                 .toFloat(),
             
             handleValidationErrors
