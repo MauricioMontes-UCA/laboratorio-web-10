@@ -52,6 +52,21 @@ class AuthController {
             });
         }
     }
+
+    async verifyAuth(req, res) {
+        try {
+            res.status(200).json({
+                isAuthenticated: true,
+                user: req.user
+            });
+        }
+        catch(err) {
+            res.status(401).json({
+                isAuthenticated: false,
+                message: "No autenticado"
+            });
+        }
+    }
 }
 
 export const authController = new AuthController();
