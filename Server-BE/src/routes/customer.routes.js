@@ -1,13 +1,14 @@
 import { Router } from "express";
 import customerController from "../controllers/customer.controller.js";
 import customerValidator from "../validators/customer.validator.js";
+import authenticateToken from "../middlewares/auth.middlewares.js";
 
 const customerRouter = Router()
 
-customerRouter.get("/", customerController.getAllCustomers)
+customerRouter.get("/", authenticateToken, customerController.getAllCustomers)
 customerRouter.get(
-    '/search', 
-    customerValidator.validateSearchQuery(), 
+    '/search', authenticateToken,
+    customerValidator.validateSearchQuery(),
     customerController.getCustomerByCode
 )
 
